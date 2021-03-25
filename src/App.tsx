@@ -1,10 +1,8 @@
 import React from 'react';
-import { globalStyles } from './styles/global';
+import { Layout } from './components/Layout/Layout';
 
 function App() {
-  globalStyles();
-
-  return <div>Music Player</div>;
+  return <Layout />;
 }
 
 export default App;
