@@ -1,14 +1,14 @@
 export const themeOptions = {
   palette: {
     primary: {
-      light: '#6cd2ff',
-      main: '#1DA1F2',
-      dark: '#0073bf',
+      light: '#825396',
+      main: '#542868',
+      dark: '#28003d',
     },
     secondary: {
-      light: '#ffffff',
-      main: '#274A9D',
-      dark: '#000000',
+      light: '#deccdb',
+      main: '#deccdb',
+      dark: '#ac9ba9',
     },
     error: {
       main: '#EB7070',
@@ -23,9 +23,9 @@ export const themeOptions = {
       main: '#499C47',
     },
     text: {
-      primary: '#000',
-      secondary: '#5B7082',
-      disabled: '#000',
+      primary: '#ffffff',
+      secondary: '#000000',
+      disabled: '#5B7082',
     },
     link: {
       default: '#6A93D1',
@@ -34,26 +34,9 @@ export const themeOptions = {
       disabled: '#CFD8E8',
     },
   },
+  spacing: 1,
   shape: {
     borderRadius: 8,
-  },
-  overrides: {
-    MuiButton: {
-      root: {
-        height: 40,
-        borderRadius: 40,
-        fontWeight: 600,
-      },
-      containedPrimary: {
-        backgroundColor: '#1DA1F2',
-        color: '#ffffff',
-      },
-    },
-  },
-  props: {
-    MuiButtonBase: {
-      disableRipple: true,
-    },
   },
   typography: {
     fontFamily: 'Roboto, sans-serif',
