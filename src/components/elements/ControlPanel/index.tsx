@@ -26,15 +26,21 @@ const useStyles = makeStyles(theme => ({
     boxShadow: 'inset 0px 0px 8px rgb(215 215 215 / 30%)',
   },
   iconButton: {
-    color: theme.palette.text.primary,
+    width: 47,
+    height: 39,
+    backgroundColor: theme.palette.text.primary,
+    boxShadow: `inset 0px 0px 10px ${theme.palette.primary.main}`,
+    borderRadius: theme.spacing(8),
+    margin: theme.spacing(0, 4),
     '&:hover': {
-      backgroundColor: `${theme.palette.text.primary}11`,
+      backgroundColor: `${theme.palette.text.primary}`,
     },
   },
   addPointButton: {
     position: 'absolute',
-    top: 0,
-    right: 0,
+    top: 10,
+    right: 10,
+    color: theme.palette.text.primary,
   },
   currentPos: {
     color: theme.palette.primary.main,
@@ -80,11 +86,7 @@ export const ControlPanel = () => {
       >
         Название трека
       </Typography>
-      <IconButton
-        className={classes.iconButton}
-        classes={{ root: classes.addPointButton }}
-        disabled
-      >
+      <IconButton classes={{ root: classes.addPointButton }} disabled>
         <Add />
       </IconButton>
       <Box>

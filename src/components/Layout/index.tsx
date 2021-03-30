@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
     transition: 'height .2s',
   },
   openPopup: {
-    height: 'calc(100vh - 215px)',
+    height: 'calc(100vh - 206px)',
   },
   showControl: {
     position: 'absolute',
