@@ -1,7 +1,17 @@
 import React, { useState } from 'react';
-import { Box, Button, Drawer, makeStyles } from '@material-ui/core';
+import {
+  AppBar,
+  Box,
+  Button,
+  Drawer,
+  makeStyles,
+  Tab,
+  Tabs,
+  Typography,
+} from '@material-ui/core';
 import { ControlPanel } from '../elements/ControlPanel';
 import cx from 'classnames';
+import SwipeableViews from 'react-swipeable-views';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -13,6 +23,10 @@ const useStyles = makeStyles(theme => ({
   },
   openPopup: {
     height: 'calc(100vh - 206px)',
+  },
+  tabs: {
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.text.primary,
   },
   showControl: {
     position: 'absolute',
@@ -28,14 +42,63 @@ const useStyles = makeStyles(theme => ({
 export const Layout = () => {
   const classes = useStyles();
   const [showControls, setShowControls] = useState(false);
+  const [currentTab, setCurrentTab] = useState(0);
 
   const layoutStyles = cx({
     [classes.root]: true,
     [classes.openPopup]: showControls,
   });
 
+  // TabPanelProps
+  function TabPanel(props: any) {
+    const { children, value, index, ...other } = props;
+
+    return (
+      <div role='tabpanel' hidden={value !== index} id={index} {...other}>
+        {value === index && (
+          <Box p={3}>
+            <Typography>{children}</Typography>
+          </Box>
+        )}
+      </div>
+    );
+  }
+
+  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+    setCurrentTab(newValue);
+  };
+
+  const handleChangeIndex = (index: number) => {
+    setCurrentTab(index);
+  };
+
   return (
     <Box className={layoutStyles}>
+      <AppBar position='static' color='default'>
+        <Tabs
+          className={classes.tabs}
+          value={currentTab}
+          onChange={handleChange}
+          indicatorColor='secondary'
+          textColor='secondary'
+          variant='fullWidth'
+        >
+          <Tab label='Плейлист' id='0' />
+          <Tab label='Точки' id='1' />
+          <Tab label='Настройки' id='2' />
+        </Tabs>
+      </AppBar>
+      <SwipeableViews index={currentTab} onChangeIndex={handleChangeIndex}>
+        <TabPanel value={currentTab} index={0}>
+          Item One
+        </TabPanel>
+        <TabPanel value={currentTab} index={1}>
+          Item Two
+        </TabPanel>
+        <TabPanel value={currentTab} index={2}>
+          Item Three
+        </TabPanel>
+      </SwipeableViews>
       <Button
         className={classes.showControl}
         fullWidth
