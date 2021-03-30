@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     position: 'relative',
     backgroundColor: theme.palette.primary.main,
     padding: theme.spacing(16, 20),
-    borderRadius: theme.spacing(16),
+    borderRadius: theme.spacing(16, 16, 0, 0),
     boxShadow: 'inset 0px 0px 8px rgb(215 215 215 / 30%)',
   },
   iconButton: {

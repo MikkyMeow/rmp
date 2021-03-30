@@ -1,4 +1,4 @@
-import { createMuiTheme, ThemeProvider } from '@material-ui/core';
+import { createMuiTheme, CssBaseline, ThemeProvider } from '@material-ui/core';
 import { Layout } from 'components/Layout';
 import React from 'react';
 
@@ -9,7 +9,8 @@ export const theme = createMuiTheme(themeOptions);
 export const App = () => {
   return (
     <ThemeProvider theme={theme}>
-      <Layout />;
+      <CssBaseline />
+      <Layout />
     </ThemeProvider>
   );
 };

@@ -38,6 +38,15 @@ export const themeOptions = {
   shape: {
     borderRadius: 8,
   },
+  overrides: {
+    MuiCssBaseline: {
+      '@global': {
+        body: {
+          backgroundColor: '#542868',
+        },
+      },
+    },
+  },
   typography: {
     fontFamily: 'Roboto, sans-serif',
     fontSize: 14,
