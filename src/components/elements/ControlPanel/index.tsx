@@ -86,7 +86,7 @@ export const ControlPanel = () => {
       >
         Название трека
       </Typography>
-      <IconButton classes={{ root: classes.addPointButton }} disabled>
+      <IconButton classes={{ root: classes.addPointButton }}>
         <Add />
       </IconButton>
       <Box>
@@ -98,23 +98,22 @@ export const ControlPanel = () => {
           color='secondary'
           defaultValue={0}
           ValueLabelComponent={ValueLabelComponent}
-          disabled
         />
       </Box>
       <Box textAlign='center'>
-        <IconButton className={classes.iconButton} disabled>
+        <IconButton className={classes.iconButton}>
           <AvTimer />
         </IconButton>
-        <IconButton className={classes.iconButton} disabled>
+        <IconButton className={classes.iconButton}>
           <PlayArrow />
         </IconButton>
-        <IconButton className={classes.iconButton} disabled>
+        <IconButton className={classes.iconButton}>
           <Pause />
         </IconButton>
-        <IconButton className={classes.iconButton} disabled>
+        <IconButton className={classes.iconButton}>
           <Stop />
         </IconButton>
-        <IconButton className={classes.iconButton} disabled>
+        <IconButton className={classes.iconButton}>
           <Speed />
         </IconButton>
       </Box>

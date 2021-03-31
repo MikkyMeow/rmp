@@ -91,7 +91,7 @@ export const Layout = () => {
         >
           <Tab className={classes.tabs} label='Плейлист' id='0' />
           <Tab className={classes.tabs} label='Точки' id='1' />
-          <Tab className={classes.tabs} label='Настройки' id='2' disabled />
+          <Tab className={classes.tabs} label='Настройки' id='2' />
         </Tabs>
       </AppBar>
       <Box className={classes.content}>
@@ -103,7 +103,7 @@ export const Layout = () => {
             <BreakpointsList />
           </TabPanel>
           <TabPanel value={currentTab} index={2}>
-            Empty
+            Привет!
           </TabPanel>
         </SwipeableViews>
       </Box>
@@ -111,6 +111,7 @@ export const Layout = () => {
         className={classes.showControl}
         fullWidth
         onClick={() => setShowControls(prev => !prev)}
+        variant='contained'
       >
         Show Control Panel
       </Button>
