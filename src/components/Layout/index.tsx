@@ -14,6 +14,7 @@ import cx from 'classnames';
 import SwipeableViews from 'react-swipeable-views';
 
 import { TrackList } from 'components/elements/TrackList';
+import { BreakpointsList } from 'components/elements/BreakpointsList';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -90,7 +91,7 @@ export const Layout = () => {
         >
           <Tab className={classes.tabs} label='Плейлист' id='0' />
           <Tab className={classes.tabs} label='Точки' id='1' />
-          <Tab className={classes.tabs} label='Настройки' id='2' />
+          <Tab className={classes.tabs} label='Настройки' id='2' disabled />
         </Tabs>
       </AppBar>
       <Box className={classes.content}>
@@ -99,10 +100,10 @@ export const Layout = () => {
             <TrackList />
           </TabPanel>
           <TabPanel value={currentTab} index={1}>
-            Item Two
+            <BreakpointsList />
           </TabPanel>
           <TabPanel value={currentTab} index={2}>
-            Item Three
+            Empty
           </TabPanel>
         </SwipeableViews>
       </Box>
