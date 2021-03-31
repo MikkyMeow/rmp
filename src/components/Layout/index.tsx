@@ -13,6 +13,8 @@ import { ControlPanel } from '../elements/ControlPanel';
 import cx from 'classnames';
 import SwipeableViews from 'react-swipeable-views';
 
+import { TrackList } from 'components/elements/TrackList';
+
 const useStyles = makeStyles(theme => ({
   root: {
     position: 'relative',
@@ -27,6 +29,10 @@ const useStyles = makeStyles(theme => ({
   tabs: {
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.text.primary,
+  },
+  content: {
+    height: 'calc(100% - 84px)',
+    overflowY: 'auto',
   },
   showControl: {
     position: 'absolute',
@@ -80,25 +86,26 @@ export const Layout = () => {
           value={currentTab}
           onChange={handleChange}
           indicatorColor='secondary'
-          textColor='secondary'
           variant='fullWidth'
         >
-          <Tab label='Плейлист' id='0' />
-          <Tab label='Точки' id='1' />
-          <Tab label='Настройки' id='2' />
+          <Tab className={classes.tabs} label='Плейлист' id='0' />
+          <Tab className={classes.tabs} label='Точки' id='1' />
+          <Tab className={classes.tabs} label='Настройки' id='2' />
         </Tabs>
       </AppBar>
-      <SwipeableViews index={currentTab} onChangeIndex={handleChangeIndex}>
-        <TabPanel value={currentTab} index={0}>
-          Item One
-        </TabPanel>
-        <TabPanel value={currentTab} index={1}>
-          Item Two
-        </TabPanel>
-        <TabPanel value={currentTab} index={2}>
-          Item Three
-        </TabPanel>
-      </SwipeableViews>
+      <Box className={classes.content}>
+        <SwipeableViews index={currentTab} onChangeIndex={handleChangeIndex}>
+          <TabPanel value={currentTab} index={0}>
+            <TrackList />
+          </TabPanel>
+          <TabPanel value={currentTab} index={1}>
+            Item Two
+          </TabPanel>
+          <TabPanel value={currentTab} index={2}>
+            Item Three
+          </TabPanel>
+        </SwipeableViews>
+      </Box>
       <Button
         className={classes.showControl}
         fullWidth
