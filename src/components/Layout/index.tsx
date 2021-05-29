@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
     transition: 'height .2s',
   },
   openPopup: {
-    height: 'calc(100vh - 206px)',
+    height: 'calc(100vh - 192px)',
   },
   tabs: {
     backgroundColor: theme.palette.primary.main,

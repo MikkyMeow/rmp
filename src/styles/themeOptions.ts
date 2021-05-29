@@ -2,7 +2,7 @@ export const themeOptions = {
   palette: {
     primary: {
       light: '#825396',
-      main: '#542868',
+      main: '#3c3c3c',
       dark: '#28003d',
     },
     secondary: {
