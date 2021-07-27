@@ -42,7 +42,9 @@ export const themeOptions = {
     MuiCssBaseline: {
       '@global': {
         body: {
-          backgroundColor: '#542868',
+          backgroundColor: '#3c3c3c',
+          width: 425,
+          height: 812,
         },
       },
     },

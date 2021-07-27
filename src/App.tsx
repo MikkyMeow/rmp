@@ -1,6 +1,5 @@
 import { createMuiTheme, CssBaseline, ThemeProvider } from '@material-ui/core';
-import { Layout } from 'components/Layout';
-import React from 'react';
+import Main from 'components/pages/Main/Main';
 
 import { themeOptions } from 'styles/themeOptions';
 
@@ -10,9 +9,7 @@ export const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Layout />
+      <Main />
     </ThemeProvider>
   );
 };
-
-export default App;
