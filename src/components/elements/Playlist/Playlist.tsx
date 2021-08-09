@@ -7,24 +7,25 @@ import { selectTrackAction } from 'store/audioReducer';
 const useStyles = makeStyles(theme => ({
   root: {
     margin: 0,
-    padding: '24px',
-  },
-  track: {
-    paddingLeft: 12,
+    padding: 0,
+    height: 'calc(100vh - 60px)',
+    listStyleType: 'none',
   },
   button: {
     background: 'none',
     color: '#777',
     padding: 16,
     width: '100%',
-    border: '1px solid transparent',
     textAlign: 'left',
+    border: 'none',
     '&:hover': {
-      borderColor: 'red',
+      cursor: 'pointer',
+      fontWeight: 'bold',
     },
   },
   trackName: {
     color: '#fff',
+    marginLeft: 12,
   },
 }));
 
@@ -46,8 +47,9 @@ export const Playlist = () => {
   return (
     <ol className={classes.root}>
       {playlist.map((track: ITrack, index: number) => (
-        <li className={classes.track} key={index}>
+        <li key={index}>
           <button className={classes.button} onClick={() => playTrack(track)}>
+            <span>{index + 1}.</span>
             <span className={classes.trackName}>{track.trackName}</span>
             <span> — </span>
             <span>{track.author}</span>

@@ -1,13 +1,16 @@
 import { Box, IconButton, makeStyles, Typography } from '@material-ui/core';
 import { PauseIcon, PlayIcon, StopIcon } from 'assets';
+import { pauseTrack, playTrack, stopTrack } from 'common/utils/player';
+import { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from 'store';
+import { iconButton } from 'styles/styles';
 
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     alignItems: 'center',
-    position: 'absolute',
+    position: 'fixed',
     backgroundColor: '#181818f2',
     borderTop: '1px solid red',
     bottom: 0,
@@ -20,39 +23,50 @@ const useStyles = makeStyles(theme => ({
   trackName: {
     color: 'white',
   },
+  iconButton: {
+    ...iconButton,
+  },
+  iconButtonDisabled: {
+    ...iconButton.disabled,
+  },
 }));
 
 export const Controls = () => {
   const classes = useStyles();
+  const audio = useMemo(() => new Audio(), []);
   const { path, trackName, author } = useSelector(
     (state: RootState) => state.audio
   );
 
-  const audio = new Audio();
-  audio.src = path;
-
-  const playTrack = () => {
-    audio.play();
-  };
-
-  const pauseTrack = () => {
-    audio.pause();
-  };
-
-  const stopTrack = () => {
-    audio.pause();
-    audio.currentTime = 0;
-  };
+  useEffect(() => {
+    audio.src = path;
+    playTrack(audio);
+  }, [path, audio]);
 
   return (
     <Box className={classes.root}>
-      <IconButton onClick={playTrack}>
+      <IconButton
+        className={classes.iconButton}
+        classes={{ disabled: classes.iconButtonDisabled }}
+        onClick={() => playTrack(audio)}
+        disabled={!trackName && !author}
+      >
         <PlayIcon className={classes.icon} />
       </IconButton>
-      <IconButton onClick={pauseTrack}>
+      <IconButton
+        className={classes.iconButton}
+        classes={{ disabled: classes.iconButtonDisabled }}
+        onClick={() => pauseTrack(audio)}
+        disabled={!trackName && !author}
+      >
         <PauseIcon className={classes.icon} />
       </IconButton>
-      <IconButton onClick={stopTrack}>
+      <IconButton
+        className={classes.iconButton}
+        classes={{ disabled: classes.iconButtonDisabled }}
+        onClick={() => stopTrack(audio)}
+        disabled={!trackName && !author}
+      >
         <StopIcon className={classes.icon} />
       </IconButton>
       {trackName && author && (

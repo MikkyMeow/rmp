@@ -6,9 +6,13 @@ const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: '#181818',
     position: 'relative',
-    width: 1440,
+    maxWidth: 1440,
     height: '100vh',
     margin: '0 auto',
+  },
+  main: {
+    height: '100% - 17px',
+    overflow: 'auto',
   },
 }));
 
@@ -17,7 +21,9 @@ const Main = () => {
 
   return (
     <Box className={classes.root}>
-      <Playlist />
+      <Box className={classes.main}>
+        <Playlist />
+      </Box>
       <Controls />
     </Box>
   );
