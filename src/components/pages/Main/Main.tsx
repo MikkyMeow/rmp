@@ -1,5 +1,6 @@
 import { Box, makeStyles } from '@material-ui/core';
 import { Controls } from 'components/elements/Controls/Controls';
+import { Playlist } from 'components/elements/Playlist/Playlist';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -16,6 +17,7 @@ const Main = () => {
 
   return (
     <Box className={classes.root}>
+      <Playlist />
       <Controls />
     </Box>
   );

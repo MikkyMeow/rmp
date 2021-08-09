@@ -1,5 +1,6 @@
-import { Box, IconButton, makeStyles } from '@material-ui/core';
+import { Box, IconButton, makeStyles, Typography } from '@material-ui/core';
 import { PauseIcon, PlayIcon, StopIcon } from 'assets';
+import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -15,10 +16,15 @@ const useStyles = makeStyles(theme => ({
   icon: {
     color: 'red',
   },
+  trackName: {
+    color: 'white',
+  },
 }));
 
 export const Controls = () => {
   const classes = useStyles();
+  // @ts-ignore
+  const { trackName, author } = useSelector(state => state.audio);
 
   return (
     <Box className={classes.root}>
@@ -31,6 +37,11 @@ export const Controls = () => {
       <IconButton>
         <StopIcon className={classes.icon} />
       </IconButton>
+      {trackName && author && (
+        <Typography className={classes.trackName}>
+          {trackName} <span> — </span> {author}
+        </Typography>
+      )}
     </Box>
   );
 };
