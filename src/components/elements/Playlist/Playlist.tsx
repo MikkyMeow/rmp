@@ -1,6 +1,7 @@
 import { makeStyles } from '@material-ui/core';
 import { TrackInfo } from 'common/types';
 import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from 'store';
 import { selectTrackAction } from 'store/audioReducer';
 
 const useStyles = makeStyles(theme => ({
@@ -35,8 +36,7 @@ interface ITrack {
 
 export const Playlist = () => {
   const classes = useStyles();
-  // @ts-ignore
-  const playlist = useSelector(state => state.playlist.playlist);
+  const playlist = useSelector((state: RootState) => state.playlist.playlist);
   const dispatch = useDispatch();
 
   const playTrack = (track: TrackInfo) => {
@@ -45,7 +45,7 @@ export const Playlist = () => {
 
   return (
     <ol className={classes.root}>
-      {playlist.map((track: ITrack, index: string) => (
+      {playlist.map((track: ITrack, index: number) => (
         <li className={classes.track} key={index}>
           <button className={classes.button} onClick={() => playTrack(track)}>
             <span className={classes.trackName}>{track.trackName}</span>

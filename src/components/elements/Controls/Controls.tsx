@@ -1,6 +1,7 @@
 import { Box, IconButton, makeStyles, Typography } from '@material-ui/core';
 import { PauseIcon, PlayIcon, StopIcon } from 'assets';
 import { useSelector } from 'react-redux';
+import { RootState } from 'store';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -23,18 +24,35 @@ const useStyles = makeStyles(theme => ({
 
 export const Controls = () => {
   const classes = useStyles();
-  // @ts-ignore
-  const { trackName, author } = useSelector(state => state.audio);
+  const { path, trackName, author } = useSelector(
+    (state: RootState) => state.audio
+  );
+
+  const audio = new Audio();
+  audio.src = path;
+
+  const playTrack = () => {
+    audio.play();
+  };
+
+  const pauseTrack = () => {
+    audio.pause();
+  };
+
+  const stopTrack = () => {
+    audio.pause();
+    audio.currentTime = 0;
+  };
 
   return (
     <Box className={classes.root}>
-      <IconButton>
+      <IconButton onClick={playTrack}>
         <PlayIcon className={classes.icon} />
       </IconButton>
-      <IconButton>
+      <IconButton onClick={pauseTrack}>
         <PauseIcon className={classes.icon} />
       </IconButton>
-      <IconButton>
+      <IconButton onClick={stopTrack}>
         <StopIcon className={classes.icon} />
       </IconButton>
       {trackName && author && (
